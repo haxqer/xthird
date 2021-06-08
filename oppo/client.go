@@ -42,7 +42,7 @@ func (o *Client) doGet(bm xthird.BodyMap) (bs []byte, err error) {
 
 	baseStr, sign := GenLoginBaseStr(bm, o.AppKey, o.AppSecret)
 
-	reqUrl := fmt.Sprintf(LoginUrl, bm["oss_id"], url.QueryEscape(bm["token"].(string)))
+	reqUrl := fmt.Sprintf(LoginUrl, bm["oss_id"], url.QueryEscape(bm.GetString("token")))
 
 	httpClient := xhttp.NewClient()
 	httpClient.Header.Add("param", baseStr)
