@@ -42,16 +42,16 @@ func main()  {
     
     oppoRsp, err := client.Login(body)
     if err != nil {
-    // todo 处理错误逻辑
-    // 如返回客户端 `参数错误` 或者 `登陆失败`
-    return
+        // todo 处理错误逻辑
+        // 如返回客户端 `参数错误` 或者 `登陆失败`
+        return
     }
     
     // 需要判断 oppoRsp.ResultCode 是否等于 200
     if oppoRsp.ResultCode != "200" {
-    // todo 处理错误逻辑
-    // 如返回客户端 `登陆失败`
-    return
+        // todo 处理错误逻辑
+        // 如返回客户端 `登陆失败`
+        return
     }
     
     fmt.Printf("result_code:%s\n", oppoRsp.ResultCode)
