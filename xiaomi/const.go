@@ -1,7 +1,7 @@
 package xiaomi
 
 const (
-	AuthTokenUrl = "https://joint-account.vivo.com.cn/cp/user/auth"
+	AuthTokenUrl = "https://mis.migc.xiaomi.com/api/biz/service/loginvalidate"
 	LocationShanghai          = "Asia/Shanghai"
 
 	RSA                       = "RSA"

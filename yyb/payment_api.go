@@ -1,16 +1,12 @@
 package yyb
 
 import (
-	"crypto/hmac"
-	"crypto/sha1"
-	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/haxqer/gofunc"
 	"github.com/haxqer/xthird"
 	"github.com/haxqer/xthird/pkg/xhttp"
-	"hash"
 	"net/url"
 	"time"
 )
@@ -61,10 +57,7 @@ func (c *Client) doOrder(bm xthird.BodyMap, loginType string) (bs []byte, err er
 	bm.Set("appid", appId)
 	bm.Set("ts", gofunc.Int64ToString(time.Now().Unix()))
 	baseStr := "GET&" + url.QueryEscape(yOrgLoc) + "&" + url.QueryEscape(bm.EncodeYYBSignParams())
-	var h hash.Hash
-	h = hmac.New(sha1.New, []byte(appKey+"&"))
-	h.Write([]byte(baseStr))
-	sign := base64.StdEncoding.EncodeToString(h.Sum(nil))
+	sign := gofunc.HmacSha1Base64(baseStr, appKey+"&")
 
 	bm.Set("sig", sign)
 	param := FormatURLParam(bm)
