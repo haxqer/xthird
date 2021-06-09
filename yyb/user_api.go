@@ -68,3 +68,11 @@ func FormatURLParam(body xthird.BodyMap) (urlParam string) {
 	}
 	return v.Encode()
 }
+
+func FormatURLParamV2(body xthird.BodyMap) (urlParam string) {
+	v := url.Values{}
+	for key, value := range body {
+		v.Add(key, value.(string))
+	}
+	return v.Encode()
+}

@@ -1,10 +1,12 @@
 package yyb
 
 const (
-	AuthTokenQQOffUrl      = "https://ysdk.qq.com/auth/qq_check_token"
-	AuthTokenQQTestUrl     = "https://ysdktest.qq.com/auth/qq_check_token"
-	AuthTokenWechatOffUrl  = "https://ysdk.qq.com/auth/wx_check_token"
-	AuthTokenWechatTestUrl = "https://ysdktest.qq.com/auth/wx_check_token"
+	AuthTokenQQOnlineUrl     = "https://ysdk.qq.com/auth/qq_check_token"
+	AuthTokenQQTestUrl       = "https://ysdktest.qq.com/auth/qq_check_token"
+	AuthTokenWechatOnlineUrl = "https://ysdk.qq.com/auth/wx_check_token"
+	AuthTokenWechatTestUrl   = "https://ysdktest.qq.com/auth/wx_check_token"
+	OrderOnlineUrl           = "https://ysdk.qq.com/mpay/buy_goods_m"
+	OrderTestUrl             = "https://ysdktest.qq.com/mpay/buy_goods_m"
 
 	LocationShanghai = "Asia/Shanghai"
 
