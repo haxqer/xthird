@@ -30,11 +30,11 @@ func TestClient_doAuthToken(t *testing.T) {
 		{
 			name: "testCase-01",
 			fields: fields{
-				WechatAppId:     "WechatAppId",
-				QQAppId:         "QQAppId",
-				SanBoxAppKey:    "SanBoxAppKey",
-				OnlineAppKey:    "OnlineAppKey",
-				WechatAppSecret: "WechatAppSecret",
+				WechatAppId:     "wxc11e0b51caa86524",
+				QQAppId:         "1111850674",
+				SanBoxAppKey:    "NVeTdBZCWr3YiObF",
+				OnlineAppKey:    "ft9pr88KVfGcjQik2oVgCekTsZ7YWio2",
+				WechatAppSecret: "aa5172a6cc98fd47f4de311cb0ab7efd",
 			},
 			args: args{
 				bm: map[string]interface{}{
@@ -48,16 +48,16 @@ func TestClient_doAuthToken(t *testing.T) {
 		{
 			name: "testCase-02",
 			fields: fields{
-				WechatAppId:     "WechatAppId",
-				QQAppId:         "QQAppId",
-				SanBoxAppKey:    "SanBoxAppKey",
-				OnlineAppKey:    "OnlineAppKey",
-				WechatAppSecret: "WechatAppSecret",
+				WechatAppId:     "wxc11e0b51caa86524",
+				QQAppId:         "1111850674",
+				SanBoxAppKey:    "NVeTdBZCWr3YiObF",
+				OnlineAppKey:    "ft9pr88KVfGcjQik2oVgCekTsZ7YWio2",
+				WechatAppSecret: "aa5172a6cc98fd47f4de311cb0ab7efd",
 			},
 			args: args{
 				bm: map[string]interface{}{
-					"openid": "oogo75lX1Ce9tMuU_iq4qJsTRhkQ",
-					"openkey": "45_8ADPFYpabLEZJYn7j_CjclCs48eaCAA9vfAvyrCo8-ROABMTZL0ZNdojIWGG-HJPHPb-PpMY0J5TjX9hUovRgdkzkIgik3127aiVjPvMmnc",
+					"openid": "oogo75nmcADu9q3koYYXQNxsA88g",
+					"openkey": "45_nRPAmVCfV7kYOWmb5k-YsiMNOVwpck_OE8COD7b899gNbZMCW7tq4uHFhQeaAbbaJreRQfQJQpjDi54TInm5S6yjVVWd1qq7eP5iaKFcC0U",
 					"timestamp": gofunc.Int64ToString(time.Now().Unix()),
 				},
 				loginType: WECHAT,

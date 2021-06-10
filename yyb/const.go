@@ -7,6 +7,10 @@ const (
 	AuthTokenWechatTestUrl   = "https://ysdktest.qq.com/auth/wx_check_token"
 	OrderOnlineUrl           = "https://ysdk.qq.com/mpay/buy_goods_m"
 	OrderTestUrl             = "https://ysdktest.qq.com/mpay/buy_goods_m"
+	GetBalanceUrl            = "https://ysdk.qq.com/mpay/get_balance_m"
+	GetBalanceTestUrl        = "https://ysdktest.qq.com/mpay/get_balance_m"
+	PayMoneyUrl              = "https://ysdk.qq.com/mpay/pay_m"
+	PayMoneyTestUrl          = "https://ysdktest.qq.com/mpay/pay_m"
 
 	LocationShanghai = "Asia/Shanghai"
 

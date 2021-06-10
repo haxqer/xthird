@@ -1,32 +1,23 @@
-package xiaomi
+package vivo
 
 import (
 	"errors"
 	"github.com/haxqer/gofunc"
 	"github.com/haxqer/xthird"
-	"net/url"
 	"sort"
 	"strings"
 )
 
-func Sign(bm xthird.BodyMap, key string) string {
-	bm.Remove("signature")
-	s := bm.EncodeCommonSignParams()
-	return gofunc.HmacSha1HexString(s, key)
-}
-
 func VerifySign(bm xthird.BodyMap, key string) bool {
-	//err := bm.CheckEmptyError("appId", "cpOrderId", "uid", "orderId", "orderStatus", "payFee", "productCode", "productCode", "productCount", "signature")
-	//if err != nil {
-	//	return false
-	//}
 	signature := bm.GetString("signature")
 	bm.Remove("signature")
-	s, err := buildSignStr(bm)
-	if err != nil {
-		return false
-	}
-	return signature == gofunc.HmacSha1HexString(s, key)
+	return signature == sign(bm, key)
+}
+
+func sign(bm xthird.BodyMap, key string) string {
+	s, _ := buildSignStr(bm)
+	s += gofunc.Md5Lower(key)
+	return gofunc.Md5Lower(s)
 }
 
 func buildSignStr(bm xthird.BodyMap) (string, error) {
@@ -42,11 +33,7 @@ func buildSignStr(bm xthird.BodyMap) (string, error) {
 		if v := bm.GetString(k); v != xthird.NULL {
 			buf.WriteString(k)
 			buf.WriteByte('=')
-			unescape, err := url.QueryUnescape(v)
-			if err != nil {
-				return xthird.NULL, err
-			}
-			buf.WriteString(unescape)
+			buf.WriteString(v)
 			buf.WriteByte('&')
 		}
 	}
