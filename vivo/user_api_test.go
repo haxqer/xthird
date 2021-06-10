@@ -21,7 +21,7 @@ func TestAuthToken(t *testing.T) {
 			name: "testCase-01",
 			args: args{
 				bm: map[string]interface{}{
-					"opentoken" : "_STV1_797e3324f7e3f1a3_797e3324f7e3f1a3_8db97942_Abbccayhpb90kvd3m",
+					"opentoken" : "_STV1_797e3324f7e3f1a3_797e3324f7e3f1a3_8db97942_Awykia3hpb90kcu3l",
 				},
 			},
 			wantRsp: nil,
