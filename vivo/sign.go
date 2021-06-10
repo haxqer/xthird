@@ -11,12 +11,13 @@ import (
 func VerifySign(bm xthird.BodyMap, key string) bool {
 	signature := bm.GetString("signature")
 	bm.Remove("signature")
+	bm.Remove("signMethod")
 	return signature == sign(bm, key)
 }
 
 func sign(bm xthird.BodyMap, key string) string {
 	s, _ := buildSignStr(bm)
-	s += gofunc.Md5Lower(key)
+	s += "&" + gofunc.Md5Lower(key)
 	return gofunc.Md5Lower(s)
 }
 
