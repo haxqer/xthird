@@ -12,3 +12,7 @@ func Sign(bm xthird.BodyMap, key string) string {
 	return gofunc.Sha1Lower(s)
 }
 
+func VerifySign(bm xthird.BodyMap, key string) bool {
+	signature := bm.GetString("signature")
+	return signature == Sign(bm, key)
+}
