@@ -23,7 +23,7 @@ func NewClient(appId, appKey, appSecret string) (client *Client) {
 }
 
 func (o *Client) Login(bm xthird.BodyMap) (oppoRsp *LoginResponse, err error) {
-	err = bm.CheckEmptyError("oss_id", "token")
+	err = bm.CheckEmptyError("sso_id", "token")
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (o *Client) doGet(bm xthird.BodyMap) (bs []byte, err error) {
 
 	baseStr, sign := GenLoginBaseStr(bm, o.AppKey, o.AppSecret)
 
-	reqUrl := fmt.Sprintf(LoginUrl, bm["oss_id"], url.QueryEscape(bm.GetString("token")))
+	reqUrl := fmt.Sprintf(LoginUrl, bm["sso_id"], url.QueryEscape(bm.GetString("token")))
 
 	httpClient := xhttp.NewClient()
 	httpClient.Header.Add("param", baseStr)

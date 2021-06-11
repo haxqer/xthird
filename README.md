@@ -37,7 +37,7 @@ func main()  {
     client := oppo.NewClient("YourAppId", "YourAppKey", "YourAppSec")
     
     body := make(xthird.BodyMap)
-    body.Set("oss_id", "oss_id - Get from client of sdk")
+    body.Set("sso_id", "sso_id - Get from client of sdk")
     body.Set("token", "token - Get from client of sdk")
     
     oppoRsp, err := client.Login(body)

@@ -31,7 +31,7 @@ func TestClient_Login(t *testing.T) {
 			},
 			args: args{
 				bm: xthird.BodyMap{
-					"oss_id": "oss_id",
+					"sso_id": "sso_id",
 					"token": "token",
 				},
 			},
