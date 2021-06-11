@@ -26,6 +26,7 @@ func TestSign(t *testing.T) {
 				},
 				key: "E10ADC3949BA59ABBE56E057F20F883E",
 			},
+			want: "7728023d3273211147a3dfb8d2f0dd5947acfb8b",
 		},
 	}
 	for _, tt := range tests {
@@ -58,6 +59,24 @@ func TestVerifySign(t *testing.T) {
 					"signature": "7728023d3273211147a3dfb8d2f0dd5947acfb8b",
 				},
 				key: "E10ADC3949BA59ABBE56E057F20F883E",
+			},
+			want: true,
+		},
+		{
+			name: "testCase-02",
+			args: args{
+				bm: map[string]interface{}{
+					"cp_ordernum": "1193844986517397504",
+					"order_env": "0",
+					"ext_info": "",
+					"userid": "15621",
+					"delive_time": "1623410076000",
+					"delive_money": "1",
+					"sdk_ordernum": "20210611191347676001617794016884",
+					"signature": "383d4b0ea8e76c5f58d46165db06cfde520b0619",
+				},
+				//key: "99AEF2712A81005B2F4EC1B92BED545D",
+				key: "37026B55007DCF0800D99EF68B65015A",
 			},
 			want: true,
 		},
