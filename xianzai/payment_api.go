@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func (x Client) Order(bm xthird.BodyMap) (rsp *OrderResponse, err error) {
+func (x *Client) Order(bm xthird.BodyMap) (rsp *OrderResponse, err error) {
 	err = bm.CheckEmptyError("frontNotifyUrl", "mhtOrderAmt", "mhtOrderDetail", "mhtOrderName", "mhtOrderNo", "notifyUrl", "consumerCreateIp")
 	if err != nil {
 		return nil, err
@@ -29,13 +29,13 @@ func (x Client) Order(bm xthird.BodyMap) (rsp *OrderResponse, err error) {
 }
 
 
-func (x Client) doOrder(bm xthird.BodyMap) (bs []byte, err error) {
+func (x *Client) doOrder(bm xthird.BodyMap) (bs []byte, err error) {
 
 	payChannelType := "13"
 	appId := x.WechatAppId
 	key := x.WechatAppKey
 
-	outputType := "2"
+	outputType := "1"
 	//userIp := "101.80.79.107"
 
 	bm.Set("appId", appId)
