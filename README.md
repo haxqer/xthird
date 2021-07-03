@@ -29,24 +29,21 @@ $ go get -u github.com/haxqer/xthird
 支付
 - [x] 现在支付
 
-## todo 文档
 
-- [x] [OPPO](https://open.oppomobile.com/)
+文档
+- [x] OPPO
 - [ ] VIVO
 - [ ] 华为
 - [ ] 小米
 - [ ] 魅族
 - [ ] 应用宝
-  
-
-  支付
 - [ ] 现在支付
 
 
 ---
-# 二、使用说明
+## 二、使用说明
 
-## OPPO 示例
+### OPPO 示例
 OPPO 登陆:
 ```go
 import (
