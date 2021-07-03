@@ -12,18 +12,15 @@ $ go get -u github.com/haxqer/xthird
 ---
 ## todo 对接 (附上渠道文档地址)
 
-[comment]: <> (- [ ] 微信)
-
-[comment]: <> (- [ ] 支付宝)
-
-[comment]: <> (- [ ] 苹果)
-
 - [x] [OPPO](https://open.oppomobile.com/)
 - [x] VIVO
 - [x] 华为
 - [x] 小米
 - [x] 魅族
 - [x] 应用宝
+- [ ] 微信
+- [ ] 支付宝
+- [ ] 苹果
   
 
 支付
