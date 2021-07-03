@@ -10,7 +10,7 @@ $ go get -u github.com/haxqer/xthird
 ```
 
 ---
-## todo (附上渠道文档地址)
+## todo 对接 (附上渠道文档地址)
 
 [comment]: <> (- [ ] 微信)
 
@@ -20,13 +20,28 @@ $ go get -u github.com/haxqer/xthird
 
 - [x] [OPPO](https://open.oppomobile.com/)
 - [x] VIVO
-- [ ] 华为
+- [x] 华为
 - [x] 小米
+- [x] 魅族
+- [x] 应用宝
+  
+
+支付
+- [x] 现在支付
+
+## todo 文档
+
+- [x] [OPPO](https://open.oppomobile.com/)
+- [ ] VIVO
+- [ ] 华为
+- [ ] 小米
 - [ ] 魅族
 - [ ] 应用宝
   
-支付
+
+  支付
 - [ ] 现在支付
+
 
 ---
 # 二、使用说明

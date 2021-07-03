@@ -6,37 +6,6 @@ import (
 	"testing"
 )
 
-func TestGetUserInfo(t *testing.T) {
-	type args struct {
-		bm xthird.BodyMap
-	}
-	tests := []struct {
-		name    string
-		args    args
-		wantRsp *GetUserInfoResponse
-		wantErr bool
-	}{
-		{
-			name: "testCase-01",
-			args: args{bm: map[string]interface{}{
-				"access_token": "",
-			}},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			gotRsp, err := GetUserInfo(tt.args.bm)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("GetUserInfo() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-			if !reflect.DeepEqual(gotRsp, tt.wantRsp) {
-				t.Errorf("GetUserInfo() gotRsp = %v, want %v", gotRsp, tt.wantRsp)
-			}
-		})
-	}
-}
-
 func TestAuthToken(t *testing.T) {
 	type args struct {
 		bm xthird.BodyMap
@@ -50,7 +19,7 @@ func TestAuthToken(t *testing.T) {
 		{
 			name: "testCase-01",
 			args: args{bm: map[string]interface{}{
-				"access_token": "",
+				"access_token": "xxxxx/l6PNWz5vzv3FylBFT+w==",
 			}},
 		},
 	}
@@ -66,4 +35,41 @@ func TestAuthToken(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Test_doUserPost(t *testing.T) {
+	type args struct {
+		bm  xthird.BodyMap
+		url string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantBs  []byte
+		wantErr bool
+	}{
+		{
+			name: "testCase-01",
+			args: args{
+				bm: map[string]interface{}{
+					"access_token": "xxxxxx/l6PNWz5vzv3FylBFT+w==",
+					"open_id":      "OPENID",
+				},
+				url: AuthTokenUrl,
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gotBs, err := doUserPost(tt.args.bm, tt.args.url)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("doUserPost() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !reflect.DeepEqual(gotBs, tt.wantBs) {
+				t.Errorf("doUserPost() gotBs = %s, want %v", gotBs, tt.wantBs)
+			}
+		})
+	}
+
 }

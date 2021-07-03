@@ -1,21 +1,20 @@
-package huawei
+package meizu
 
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/haxqer/gofunc"
 	"github.com/haxqer/xthird"
 	"github.com/haxqer/xthird/pkg/xhttp"
+	"time"
 )
 
-// https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/account-gettokeninfo-0000001050050585-V5
-
-func AuthToken(bm xthird.BodyMap) (rsp *AuthResponse, err error)  {
-	err = bm.CheckEmptyError("access_token")
+func (c *Client) AuthToken(bm xthird.BodyMap) (rsp *AuthResponse, err error) {
+	err = bm.CheckEmptyError("uid", "session_id")
 	if err != nil {
 		return nil, err
 	}
-	bm.Set("open_id", "OPENID")
-	bs, err := doUserPost(bm, AuthTokenUrl)
+	bs, err := c.doAuthToken(bm)
 	if err != nil {
 		return nil, err
 	}
@@ -26,10 +25,16 @@ func AuthToken(bm xthird.BodyMap) (rsp *AuthResponse, err error)  {
 	return rsp, nil
 }
 
-func doUserPost(bm xthird.BodyMap, url string) (bs []byte, err error)  {
+func (c *Client) doAuthToken(bm xthird.BodyMap) (bs []byte, err error) {
+	bm.Set("app_id", c.AppId)
+	bm.Set("ts", gofunc.Int64ToString(time.Now().Unix()))
+
+	sign := Sign(bm, c.AppSecret)
+	bm.Set("sign", sign)
+	bm.Set("sign_type", "md5")
 	param := bm.FormatURLParam()
 	httpClient := xhttp.NewClient()
-	res, bs, errs := httpClient.Type(xhttp.TypeFormData).Post(url).SendString(param).EndBytes()
+	res, bs, errs := httpClient.Type(xhttp.TypeForm).Post(AuthUrl).SendString(param).EndBytes()
 	if len(errs) > 0 {
 		return nil, errs[0]
 	}
@@ -38,4 +43,3 @@ func doUserPost(bm xthird.BodyMap, url string) (bs []byte, err error)  {
 	}
 	return bs, nil
 }
-

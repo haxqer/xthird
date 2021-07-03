@@ -264,6 +264,30 @@ func (bm BodyMap) EncodeCommonSignParams() string {
 	return buf.String()[:buf.Len()-1]
 }
 
+func (bm BodyMap) EncodeCommonSignParamsAllowEmpty() string {
+	var (
+		buf     strings.Builder
+		keyList []string
+	)
+	mu.RLock()
+	for k := range bm {
+		keyList = append(keyList, k)
+	}
+	sort.Strings(keyList)
+	mu.RUnlock()
+	for _, k := range keyList {
+		v := bm.GetString(k)
+		buf.WriteString(k)
+		buf.WriteByte('=')
+		buf.WriteString(v)
+		buf.WriteByte('&')
+	}
+	if buf.Len() <= 0 {
+		return NULL
+	}
+	return buf.String()[:buf.Len()-1]
+}
+
 // ("bar=baz&foo=quux")
 func (bm BodyMap) EncodeGetParams() string {
 	var (
